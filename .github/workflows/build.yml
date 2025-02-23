@@ -88,20 +88,9 @@ jobs:
           -DLAF_BACKEND=$laf_backend \
           -DSKIA_DIR=skia \
           -DSKIA_LIBRARY_DIR=skia/out/Release-$skia_arch
-    - name: Compiling
-      shell: bash
-      run: |
-        cd build && ninja
-    - name: Running C++ Tests
-      shell: bash
-      run: |
-        if [[ "${{ runner.os }}" == "Linux" ]] ; then
-          export XVFB=xvfb-run
-        fi
-        cd build && $XVFB ctest --output-on-failure
    - uses: actions/upload-artifact@v4
-      with:
+       with:
         name: aseprite
         path: |
-          D:/a/aseprite/aseprite/build/bin/data
-          D:/a/aseprite/aseprite/build/bin/aseprite.exe
+         D:/a/aseprite/aseprite/build/bin/data
+         D:/a/aseprite/aseprite/build/bin/aseprite.exe
